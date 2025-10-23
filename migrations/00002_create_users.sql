@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS auth_users (
     auth_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_email CITEXT UNIQUE NOT NULL,
     auth_password_hash TEXT NOT NULL,
-    username TEXT,
+    username UNIQUE TEXT NOT NULL,
     role NOT NULL CHECK (role IN ('host', 'client'))
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()

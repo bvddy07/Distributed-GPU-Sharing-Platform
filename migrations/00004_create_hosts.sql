@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS hosts (
     host_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_user_id UUID NOT NULL REFERENCES auth_users(id) ON DELETE CASCADE,
-    username TEXT,
+    username UNIQUE NOT NULL TEXT,
     is_active BOOLEAN NOT NULL DEFAULT FALSE,
     location TEXT,
     metadata JSONB DEFAULT '{}'::jsonb, -- machine info, verification status

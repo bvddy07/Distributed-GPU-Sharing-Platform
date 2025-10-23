@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS clients (
     client_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_user_id UUID NOT NULL REFERENCES auth_users(id) ON DELETE CASCADE,
-    username TEXT,
+    username UNIQUE TEXT NOT NULL,
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
