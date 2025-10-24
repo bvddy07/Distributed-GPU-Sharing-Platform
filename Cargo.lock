@@ -162,10 +162,12 @@ dependencies = [
 name = "backend"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "argon2",
  "axum",
  "chrono",
  "dotenv",
+ "dotenvy",
  "jsonwebtoken",
  "rand 0.9.2",
  "redis",
@@ -173,8 +175,10 @@ dependencies = [
  "serde",
  "sqlx",
  "sqlx-cli",
+ "thiserror 2.0.17",
  "tokio",
  "tower-http",
+ "tracing",
  "uuid",
 ]
 
