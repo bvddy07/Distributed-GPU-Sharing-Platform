@@ -5,10 +5,10 @@ use sqlx::{
     postgres::{PgConnectOptions, PgPoolOptions},
 };
 use std::time::Duration;
-use std::str::FromStr;
 use tracing::{info, warn, error};
 use anyhow::{Context, anyhow};
 use tokio::time::sleep;
+use dotenvy; 
 
 #[derive(Clone, Debug)]
 pub struct DbConfig {
@@ -43,7 +43,7 @@ impl Default for DbConfig {
 /// Returns `Ok(PgPool)` or `Err(AppError::Internal)` on failure.
 pub async fn create_db_pool(cfg: &DbConfig) -> Result<PgPool, AppError> {
     // load env in dev if present
-    let _ = dotenv::dotenv(); // This is syntactically valid, though .ok() is common
+    let _ = dotenvy::dotenv().ok();
 
     info!(
         "initializing db pool; min={}, max={}, url={}",
